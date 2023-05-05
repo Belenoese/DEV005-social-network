@@ -1,8 +1,8 @@
-/* eslint-disable import/named
-import { currentUserNow } from '../lib/auth.js'; */
+/* eslint-disable import/named */
+import { currentUserNow } from '../lib/auth.js';
 
 // pantalla - error
-function mistake(navigateTo) {
+function mistake() {
   const bug = document.createElement('div');
   bug.innerHTML = `<section class="errorSection"><img class="imgBug" src="../lib/img/error404.png">
   <h2 class="text"> Error 404: página no encontrada.</h2>
@@ -11,7 +11,7 @@ function mistake(navigateTo) {
 
   const keep = bug.querySelector('.initButton');
   keep.addEventListener('click', () => {
-    // const user = currentUserNow();
+    currentUserNow();
     // console.log(user);
     // // eslint-disable-next-line no-unused-expressions
     // user ? navigateTo('/emprende') : navigateTo('/');
