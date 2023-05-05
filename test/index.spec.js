@@ -1,5 +1,10 @@
+/**
+ * @jest-environment jsdom
+ */
+
 // import { navigateTo } from '../src/main.js';
 import { login } from '../src/Components/login.js';
+import { home } from '../src/Components/home.js';
 /* import { signIn } from '../src/lib/auth.js'; */
 
 // jest.mock('../src/lib/firebase.js');
@@ -22,7 +27,7 @@ describe('login', () => {
     email.value = 'amigas@gmail.com';
     password.value = '123456';
     const button = myHtml.querySelector('.formInteraction');
-    button.submit();
+    button.click();
     expect(navigateTo).toHaveBeenCalledWith('/emprende');
   });
   it('Si el usuario no le da click a getIn, no debe cambiar de ruta', () => {
@@ -33,5 +38,14 @@ describe('login', () => {
     const myHtml = login(navigateTo);
     myHtml.querySelector('.bottomTextLogin').click();
     expect(navigateTo).toHaveBeenCalledWith('/register');
+  });
+});
+
+describe('home', () => {
+  it('contiene un boton para dar like', () => {
+    const DOM = document.createElement('div');
+    DOM.append(home());
+    const haveAButton = DOM.querySelector('.like-btn');
+    expect(haveAButton).not.toBe(undefined);
   });
 });
